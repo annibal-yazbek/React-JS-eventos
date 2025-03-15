@@ -1,22 +1,21 @@
 import { useState } from "react";
 
 const EventHandlingExamples = () => {
- 
   const handleClick = () => {
-    alert ("Testando");
+    alert("Testando");
   };
 
   const handleGreetings = (name) => {
     alert(`Olá ${name}`);
   };
 
-  const [name,setName] = useState("");
+  const [name, setName] = useState("");
 
   // Evento de formulário - evitando recarga da pagina
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    alert(`enviado!" ${name}`);
+    alert(`enviado! ${name}`);
   };
 
   return (
@@ -28,10 +27,14 @@ const EventHandlingExamples = () => {
       <button onClick={() => handleGreetings("Pedro")}>Dizer Olá Pedro</button>
       <br />
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Digite seu nome"/>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Digite seu nome"
+        />
         <input type="submit" value="Enviar" />
       </form>
-
     </div>
   );
 };
